@@ -1,14 +1,21 @@
 service: aws-node-http-api-project
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 provider:
   name: aws
   runtime: nodejs18.x
 
+layers:
+  qpdf:
+    package:
+      artifact: layers/qpdf.zip
+
 functions:
-  api:
+  encryptPdf:
     handler: index.handler
+    layers:
+      - !Ref QpdfLambdaLayer
     events:
       - httpApi:
-          path: /
+          path: /api/v1
           method: get
