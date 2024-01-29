@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "node-qpdf2": "^6.0.0"
+  }
+}
